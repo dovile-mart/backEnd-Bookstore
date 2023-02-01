@@ -1,20 +1,24 @@
 package com.example.Bookstore.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import com.example.Bookstore.domain.BookRepository;
 
 @Controller
 public class BookController {
 	
-	@GetMapping("/index")
-	public String indexPage() {
-		return "index";
-	//@RequestParam(name= "book", required=false) String book, Model model) {
-	//@RequestMapping(value = "/index", method = RequestMethod.GET)
+	@Autowired BookRepository repository;
 	
-	//public String greetingFormBooks(Model model) {	
-	//ArrayList<Book> books = new ArrayList<>();
-	//	model.addAttribute("books", books);
-	//	return "books";
+	@GetMapping("/index")		//http://localhost:8080/index
+	public String greetingFormBooks(Model model) {	
+			return "index";			//kutsuu index.html
 	}
+	@GetMapping("/booklist") 	//http://localhost:8080/booklist
+	public String booklistForm(Model model) {
+		model.addAttribute("kirjat", repository.findAll());
+		return "booklist";			//kutsuu booklist.html
+	}
+	
 }
