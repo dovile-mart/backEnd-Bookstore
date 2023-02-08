@@ -9,6 +9,7 @@ import com.example.Bookstore.domain.BookRepository;
 @Controller
 public class BookController {
 	
+
 	@Autowired BookRepository repository;
 	
 	@GetMapping("/index")		//http://localhost:8080/index
