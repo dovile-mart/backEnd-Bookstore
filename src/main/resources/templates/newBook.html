@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New book</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add new book</h1>
+    <form th:object="${uusiKirja}" th:action="@{saveBook}" action="#" method="post">
+		<div>
+			<label>Author</label>
+			<input type="text" th:field="*{author}"/>
+		</div>
+		<div>
+			<label>Title</label>
+			<input type="text" th:field="*{title}"/>
+		</div>
+		<div>
+			<label>ISBN</label>
+			<input type="text" th:field="*{isbn}"/>
+		</div>
+		<div>
+			<label>Year</label>
+			<input type="number" min="1900" th:field="*{publication_year}"/>
+		</div>
+		<div>
+			<label>Price</label>
+			<input type="number" min= "1" th:field="*{price}"/>
+		</div>
+		<br>
+		<input type="submit" value="Add Book">    
+    </form>
+    <table>
+		<tr>
+			<th></th>
+		    <th></th>
+		    <th>ISBN</th>
+		    <th>Year</th>
+		</tr>  
+    	<tr th:each = "book : ${kirjat}">
+    		<td th:text="${book.title}"></td>
+    		<td th:text="${book.author}"></td>
+    		<td th:text="${book.isbn}"></td>
+    		<td th:text="${book.publicationYear}"></td> 				
+    	</tr>
+     </table>
+</body>
+</html>

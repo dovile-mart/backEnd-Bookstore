@@ -36,6 +36,7 @@ public class BookstoreApplication implements CommandLineRunner {
 		bookRepository.save(new Book("Huonetoveri", "Ruth Ware", "9789511450337", 2023, 27.95));
 		bookRepository.save(new Book("Sota vai rauha", "Mihail Shishkin", "9789510491850", 2023, 33.95));
 		bookRepository.save(new Book("Pipsa ja unen lähtölaskenta", "Virve Lehväs", "9789511393924", 2021, 14.95));
+		bookRepository.save(new Book("Pipsa ja unen lähtölaskenta", "Virve Lehväs", "9789511393924", 2021, 14.95));
 		log.info("Tulostetaan kirjat:");
 		for (Book book : bookRepository.findAll()) {
 			log.info(book.toString());
