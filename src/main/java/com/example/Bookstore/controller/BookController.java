@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.Bookstore.domain.Book;
@@ -14,7 +15,8 @@ import com.example.Bookstore.domain.BookRepository;
 public class BookController {
 	
 
-	@Autowired BookRepository repository;
+	@Autowired 
+	BookRepository repository;
 	
 	@GetMapping("/index")		//http://localhost:8080/index
 	public String greetingFormBooks(Model model) {	
@@ -29,6 +31,11 @@ public class BookController {
 	public String addBook(Model model) {
 		model.addAttribute("uusiKirja", new Book());
 		return "newBook";
+	}
+	@PostMapping("/saveBook")
+	public String saveBook(Book book) {
+		repository.save(book);
+		return "redirect:booklist";
 	}
 	
 	@GetMapping("/delete/{id}")
