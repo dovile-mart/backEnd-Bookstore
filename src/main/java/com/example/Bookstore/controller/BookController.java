@@ -30,7 +30,7 @@ public class BookController {
 	@GetMapping("/addBook")
 	public String addBook(Model model) {
 		model.addAttribute("uusiKirja", new Book());
-		return "newBook";
+		return "addbook";
 	}
 	@PostMapping("/saveBook")
 	public String saveBook(Book book) {
