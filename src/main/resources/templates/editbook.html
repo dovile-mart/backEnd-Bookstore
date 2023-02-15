@@ -3,7 +3,8 @@
 <head>
 <title>Edit book</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 </head>
 <body>
 	<h1>Edit book</h1>
@@ -28,8 +29,14 @@
 				<label>Price</label> <input type="number" min="1"
 					th:field="*{price}" />
 			</div>
-			<br> 
-			<input type="submit" class="btn btn-success" value="Save" ></input>
+			<div>
+				<label>Category</label> <select id="categories"
+					th:field="*{category}">
+					<option th:each="category: ${categories}" th:value="${category.id}"
+						th:text="${category.name}"></option>
+				</select>
+			</div>
+			<br> <input type="submit" class="btn btn-success" value="Save"></input>
 		</form>
 
 	</div>
