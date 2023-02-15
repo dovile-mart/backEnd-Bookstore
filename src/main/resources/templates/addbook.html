@@ -24,7 +24,7 @@
 				th:field="*{publicationYear}" />
 		</div>
 		<div>
-			<label>Price</label> <input type="number" min="1" th:field="*{price}" />
+			<label>Price</label> <input type="number" min="1" placeholder="0.00" step="any" th:field="*{price}" />
 		</div>
 		<br> <label>Category</label> <select id="categories"
 			th:field="*{category}">
