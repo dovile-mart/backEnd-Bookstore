@@ -11,26 +11,32 @@
 	<form th:object="${uusiKirja}" th:action="@{saveBook}" action="#"
 		method="post">
 		<div>
-			<label>Author</label> <input type="text" th:field="*{author}" />
+			<label>Title</label> 
+			<input type="text" th:field="*{title}" />
+			<div th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Error</div>
 		</div>
 		<div>
-			<label>Title</label> <input type="text" th:field="*{title}" />
+			<label>Author</label> 
+			<input type="text" th:field="*{author}" />
 		</div>
 		<div>
-			<label>ISBN</label> <input type="text" th:field="*{isbn}" />
+			<label>ISBN</label> 
+			<input type="text" th:field="*{isbn}" />
 		</div>
 		<div>
-			<label>Year</label> <input type="number" min="1990" max="2023"
-				th:field="*{publicationYear}" />
+			<label>Year</label> 
+			<input type="number" min="1990" max="2023" th:field="*{publicationYear}" />
 		</div>
 		<div>
-			<label>Price</label> <input type="number" min="1" placeholder="0.00" step="any" th:field="*{price}" />
+			<label>Price</label> 
+			<input type="number" min="1" placeholder="0.00" step="any" th:field="*{price}" />
 		</div>
-		<br> <label>Category</label> <select id="categories"
-			th:field="*{category}">
-			<option th:each="category: ${categories}" th:value="${category.id}"
-				th:text="${category.name}">
-		</select> <input type="submit" class="btn btn-success" value="Add Book"></input>
+		<br> 
+		<label>Category</label> 
+		<select id="categories" th:field="*{category}">
+			<option th:each="category: ${categories}" th:value="${category.id}"	th:text="${category.name}">
+		</select> 
+		<input type="submit" class="btn btn-success" value="Add Book"></input>
 	</form>
 
 </body>

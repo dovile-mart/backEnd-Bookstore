@@ -7,6 +7,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 
 @Entity
 public class Book {
@@ -16,12 +20,18 @@ public class Book {
 	private Long id;
 
 	// @Column(insertable=false, updatable=false)
+	@NotEmpty(message = "Anna kirjan otsikko.")
+	@Size(min=2, max=100)
+	private String title;
+	
 
-	private String title, author, isbn;
+	private String author;
+	@NotNull
+	private String isbn;
 	private int publicationYear;
 	private double price;
 
-	@ManyToOne(fetch = FetchType.EAGER) // EAGER hakee category tietoja heti käynnistäessä
+	@ManyToOne(fetch = FetchType.EAGER) // EAGER hakee category tietoja heti käynnistyessä
 	@JoinColumn(name = "categoryid")
 	private Category category;
 
@@ -29,7 +39,7 @@ public class Book {
 		super();
 	}
 
-	public Book(String title, String author, String isbn, int publicationYear, double price) {
+	public Book(@NotEmpty(message = "Anna kirjan otsikko.") @Size(min=2, max=100) String title, String author, String isbn, int publicationYear, double price) {
 		super();
 		this.title = title;
 		this.author = author;
@@ -38,7 +48,7 @@ public class Book {
 		this.price = price;
 	}
 
-	public Book(String title, String author, String isbn, int publicationYear, double price, Category category) {
+	public Book(@NotEmpty(message = "Anna kirjan otsikko.") @Size(min=2, max=100) String title, String author, String isbn, int publicationYear, double price, Category category) {
 		super();
 		// this.id = id;
 		this.title = title;

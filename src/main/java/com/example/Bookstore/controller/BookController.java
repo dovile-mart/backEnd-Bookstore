@@ -13,10 +13,16 @@ import com.example.Bookstore.domain.Book;
 import com.example.Bookstore.domain.BookRepository;
 import com.example.Bookstore.domain.CategoryRepository;
 
+import org.springframework.validation.BindingResult;
+import jakarta.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 public class BookController {
 	
+	private static final Logger log = LoggerFactory.getLogger(BookController.class);
 	
 	@Autowired
 	private BookRepository bookRepository;
@@ -49,7 +55,12 @@ public class BookController {
 	}
 
 	@PostMapping("/saveBook")
-	public String saveBook(Book book) {
+	public String saveBook(@Valid Book book, BindingResult bindingResult) {
+		log.info("Controller: check validation of book: " + book);
+		if (bindingResult.hasErrors()) {
+			log.info("Validation error happened");
+			return "addbook";
+		}
 		bookRepository.save(book);
 		return "redirect:booklist";
 	}
