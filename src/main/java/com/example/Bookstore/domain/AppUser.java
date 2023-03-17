@@ -21,6 +21,9 @@ public class AppUser {
 	@Column(name= "password", nullable=false)
 	private String passwordHash;
 	
+	@Column(name= "email", nullable=false)
+	private String email;
+	
 	@Column(name= "role", nullable=false)
 	private String role;
 	
@@ -36,6 +39,14 @@ public class AppUser {
 	}
 
 	
+	public AppUser(String username, String passwordHash, String email, String role) {
+		super();
+		this.username = username;
+		this.passwordHash = passwordHash;
+		this.email = email;
+		this.role = role;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -60,6 +71,14 @@ public class AppUser {
 		this.passwordHash = passwordHash;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getRole() {
 		return role;
 	}
@@ -68,10 +87,11 @@ public class AppUser {
 		this.role = role;
 	}
 
-/*	@Override
+/*	
+	@Override
 	public String toString() {
-		return "AppUser [id=" + id + ", username=" + username + ", passwordHash=" + passwordHash + ", role=" + role
-				+ "]";
+		return "AppUser [id=" + id + ", username=" + username + ", passwordHash=" + passwordHash + ", email=" + email
+				+ ", role=" + role + "]";
 	}
 	*/
 	
