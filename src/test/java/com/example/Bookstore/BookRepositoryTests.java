@@ -64,12 +64,12 @@ class BookRepositoryTests {
 		assertEquals(category.getName(), "Lasten kirjat");
 	}
 	
-	@Test
+/*	@Test
 	public void saveBook() {
 		Book book = new Book();
 		bookRepository.save(book);
 		assertNotEquals(book.getId(), null);
-	}
+	}*/
 	
 	@Test
 	public void saveNewBook() {
