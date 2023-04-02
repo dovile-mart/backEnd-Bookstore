@@ -98,13 +98,13 @@ class BookRepositoryTests {
 	public void saveNewCategory() {
 		Category category = new Category("Testikirjat");
 		categoryRepository.save(category);
-		assertThat(category.getId()).isNotNull();
+		assertThat(category.getCategoryid()).isNotNull();
 	}
 	
 	@Test
 	public void updateCategory() {
 		Optional<Category> category = categoryRepository.findById((long)1);
-		assertNotEquals(category.get().getId(), null);
+		assertNotEquals(category.get().getCategoryid(), null);
 		category.get().setName("Testi Title");
 		List<Category> categories = categoryRepository.findByName("Testi Title");
 		assertThat(categories).hasSize(1);
@@ -114,14 +114,14 @@ class BookRepositoryTests {
 	public void deleteCategoryById() throws Exception {
 		Category category = new Category("Poistettava kategoria");
 		categoryRepository.save(category);
-		assertThat(category.getId()).isNotNull();
+		assertThat(category.getCategoryid()).isNotNull();
 	}
 	
 	@Test
 	public void deleteCategory() {
 		Optional<Category> category = categoryRepository.findById((long)1);
 		System.out.println("Haetaan kategoriaa id:llä 1: " + category);
-		assertNotEquals(category.get().getId(), null);
+		assertNotEquals(category.get().getCategoryid(), null);
 		category.get().setName("Testikategoria");
 		System.out.println("Haetaan kategoriaa setName Testikategoria jälkeen: " + category);
 		category.get().setName(null);
