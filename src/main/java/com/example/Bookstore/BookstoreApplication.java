@@ -31,10 +31,10 @@ public class BookstoreApplication implements CommandLineRunner {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
+	
 	}
-
-	//demodatan syöttö
-	@Bean
+	//demodatan syöttö}
+	/*@Bean
 	public CommandLineRunner demo(BookRepository bookRepository, CategoryRepository categoryRepository, AppUserRepository appusRepository) {
 	return (args) -> {
 	// Your code...add some demo data to db
@@ -70,7 +70,7 @@ public class BookstoreApplication implements CommandLineRunner {
 			log.info(user.toString());
 		}
 	};
-	}
+	}*/
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -81,5 +81,6 @@ public class BookstoreApplication implements CommandLineRunner {
 		for (Book book : bookRepository.findAll()) {
 			log.info(book.toString());
 		}*/
+	
 	}
 }
