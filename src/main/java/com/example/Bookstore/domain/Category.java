@@ -5,11 +5,14 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Category {
@@ -17,7 +20,11 @@ public class Category {
 	@Id
 //	@GeneratedValue(strategy = GenerationType.AUTO)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(name="categoryid")
+	private Long categoryid;
+	
+	@NotNull
+	@Size(max=50)
 	private String name;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
@@ -34,12 +41,12 @@ public class Category {
 		this.name = name;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getCategoryid() {
+		return categoryid;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setCategoryid(Long categoryid) {
+		this.categoryid = categoryid;
 	}
 
 	public String getName() {
@@ -64,7 +71,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", name=" + name + "]";
+		return "Category [categoryid=" + categoryid + ", name=" + name + "]";
 	}
 
 }

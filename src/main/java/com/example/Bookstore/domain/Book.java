@@ -1,5 +1,6 @@
 package com.example.Bookstore.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -25,11 +26,19 @@ public class Book {
 	@Size(min=2, max=100)
 	private String title;
 	
-
-	private String author;
 	@NotNull
+	@Size(min=2, max=100)
+	private String author;
+	
+	@NotNull
+	@Size(max=50)
 	private String isbn;
+	
+	@NotNull
+	@Column(name="publication_year")
 	private int publicationYear;
+	
+	@NotNull
 	private double price;
 
 	@ManyToOne(fetch = FetchType.EAGER) // EAGER hakee category tietoja heti käynnistyessä
